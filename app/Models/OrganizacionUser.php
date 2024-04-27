@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RolesUser extends Model
+class OrganizacionUser extends Model
 {
     use HasFactory;
 
-    protected $table = 'roles_user';
+    protected $table = 'organizacion_user';
 
     protected $fillable = [
         'user_id',
-        'roles_id',
+        'organizacion_id',
     ];
     /*
     public function user()
