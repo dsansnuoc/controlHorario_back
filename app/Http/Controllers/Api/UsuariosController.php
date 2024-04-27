@@ -18,19 +18,15 @@ use Illuminate\View\View;
 class UsuariosController extends Controller
 {
 
-
     public function create(): View
     {
         return view('auth.register');
     }
 
-
-
     public function index()
     {
         return User::with('roles', 'organizaciones')->get();
     }
-
 
     public function store(Request $request)
     {
@@ -79,7 +75,6 @@ class UsuariosController extends Controller
 
         try {
 
-            //$usuario = User::where('id', $data['id'])->first();
             $usuario = User::with('roles', 'organizaciones')
                 ->where('id', $data['id'])
                 ->first();
@@ -121,6 +116,7 @@ class UsuariosController extends Controller
             return response()->json(['message' => 'Error: ' . $e->getMessage(), 'id_error' => Response::HTTP_INTERNAL_SERVER_ERROR, 'etiqueta' => 'general.error'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
     public function changeStatus(Request $request)
     {
         $data = $request->json()->all();
@@ -133,6 +129,24 @@ class UsuariosController extends Controller
             ]);
 
             return response()->json(['message' => 'OK', 'id_error' => '200', 'etiqueta' => 'general.ok'], Response::HTTP_OK);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error: ' . $e->getMessage(), 'id_error' => Response::HTTP_INTERNAL_SERVER_ERROR, 'etiqueta' => 'general.error'], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function indexUsersOrg(Request $request)
+    {
+        $data = $request->json()->all();
+
+        try {
+
+            $usuarios = User::with('roles', 'organizaciones')
+                ->whereHas('organizaciones', function ($query) use ($request) {
+                    $query->where('organizacion.id', $request->id);
+                })
+                ->get();
+
+            return response()->json(['message' => $usuarios, 'id_error' => '200', 'etiqueta' => 'general.ok'], Response::HTTP_OK);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error: ' . $e->getMessage(), 'id_error' => Response::HTTP_INTERNAL_SERVER_ERROR, 'etiqueta' => 'general.error'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }

@@ -25,9 +25,18 @@ class EntradaController extends Controller
                 'message' => ['These credentials do not match our records.']
             ], 401);
         }
+
+        if ($user->activate == false) {
+            return response([
+                'message' => ['No activate.']
+            ], 401);
+        }
+
         $token = $user->createToken('DSN_TFM_2024@dsansn@uoc.eu')->accessToken; // ->plainTextToken;
         $roles = $user->roles;
-     
+        $org = $user->organizaciones;
+
+
         $response = [
             'user' => $user,
             'token' => $token
@@ -44,7 +53,6 @@ class EntradaController extends Controller
             'status' => true,
             'users' => $users
         ]);
-   
     }
 
     /**

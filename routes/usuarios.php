@@ -12,3 +12,5 @@ Route::middleware('auth:api')->post('/usuarioBuscar', [UsuariosController::class
 Route::middleware('auth:api')->put('/usuarioActualizar/{id}', [UsuariosController::class, 'update']);
 
 Route::middleware('auth:api')->post('/usuarioCambiarEstado', [UsuariosController::class, 'changeStatus']);
+
+Route::middleware('auth:api')->post('/usuariosOrganizaciones', [UsuariosController::class, 'indexUsersOrg']);
