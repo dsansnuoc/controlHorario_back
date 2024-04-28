@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('mysql_empresa1')->create('tipo_parada', function (Blueprint $table) {
+        Schema::connection('mysql_empresa1')->create('tipo_solicitud', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('descripcion', 50);
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::connection('mysql_empresa1')->dropIfExists('tipo_parada');
+        Schema::connection('mysql_empresa1')->dropIfExists('tipo_solicitud');
     }
 };

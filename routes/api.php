@@ -24,4 +24,5 @@ require __DIR__ . '/auth.php';
 
 include 'organizaciones.php';
 include 'usuarios.php';
-include 'roles..php';
+include 'roles.php';
+include 'tipoPausa.php';
