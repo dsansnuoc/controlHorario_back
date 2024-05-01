@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::connection('mysql_empresa1')->create('tipo_solicitud', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('descripcion', 50);
+            $table->string('description', 50);
         });
     }
 

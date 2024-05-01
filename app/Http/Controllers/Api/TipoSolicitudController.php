@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\TipoParada;
+use App\Models\TipoSolicitud;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class TipoParadaController extends Controller
+class TipoSolicitudController extends Controller
 {
     public function index(Request $request)
     {
         $data = $request->json()->all();
         $nombreConexion = $data['nombreConexion'];
-        $tipoParada = TipoParada::on($nombreConexion)->get();
-        return $tipoParada;
+        $tipoSolicitud = TipoSolicitud::on($nombreConexion)->get();
+        return $tipoSolicitud;
     }
 
     public function show(Request $request)
@@ -25,8 +25,8 @@ class TipoParadaController extends Controller
             $nombreConexion = $data['nombreConexion'];
             $id = $data['id'];
 
-            $tipoParada = TipoParada::on($nombreConexion)->findOrFail($id);
-            return response()->json($tipoParada, 200);
+            $tipoSolicitud = TipoSolicitud::on($nombreConexion)->findOrFail($id);
+            return response()->json($tipoSolicitud, 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error: ' . $e->getMessage(), 'id_error' => Response::HTTP_INTERNAL_SERVER_ERROR, 'etiqueta' => 'general.error'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
@@ -38,10 +38,10 @@ class TipoParadaController extends Controller
             $data = $request->json()->all();
             $nombreConexion = $data['nombreConexion'];
 
-            $tipoParada = new TipoParada();
-            $tipoParada->descripcion = $data['descripcion'];
-            $tipoParada->setConnection($nombreConexion);
-            $tipoParada->save();
+            $tipoSolicitud = new TipoSolicitud();
+            $tipoSolicitud->description = $data['description'];
+            $tipoSolicitud->setConnection($nombreConexion);
+            $tipoSolicitud->save();
 
             return response()->json(['message' => 'OK', 'id_error' => '200', 'etiqueta' => 'general.ok'], Response::HTTP_OK);
         } catch (\Exception $e) {
@@ -55,10 +55,10 @@ class TipoParadaController extends Controller
             $data = $request->json()->all();
             $nombreConexion = $data['nombreConexion'];
 
-            $tipoParada = TipoParada::on($nombreConexion)->findOrFail($id);
-            $tipoParada->descripcion = $data['descripcion'];
-            $tipoParada->setConnection($nombreConexion);
-            $tipoParada->save();
+            $tipoSolicitud = TipoSolicitud::on($nombreConexion)->findOrFail($id);
+            $tipoSolicitud->description = $data['description'];
+            $tipoSolicitud->setConnection($nombreConexion);
+            $tipoSolicitud->save();
 
             return response()->json(['message' => 'OK', 'id_error' => '200', 'etiqueta' => 'general.ok'], Response::HTTP_OK);
         } catch (\Exception $e) {

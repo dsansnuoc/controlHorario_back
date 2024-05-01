@@ -26,3 +26,4 @@ include 'organizaciones.php';
 include 'usuarios.php';
 include 'roles.php';
 include 'tipoPausa.php';
+include 'tipoSolicitud.php';

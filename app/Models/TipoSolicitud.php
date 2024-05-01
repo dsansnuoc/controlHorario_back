@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TipoParada extends Model
+class TipoSolicitud extends Model
 {
     use HasFactory;
 
-    protected $table = 'tipo_parada';
+    protected $table = 'tipo_solicitud';
 
     protected $fillable = [
-        'descripcion'
+        'description'
     ];
 }
