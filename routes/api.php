@@ -27,3 +27,4 @@ include 'usuarios.php';
 include 'roles.php';
 include 'tipoPausa.php';
 include 'tipoSolicitud.php';
+include 'fichajes.php';
