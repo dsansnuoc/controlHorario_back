@@ -28,3 +28,5 @@ include 'roles.php';
 include 'tipoPausa.php';
 include 'tipoSolicitud.php';
 include 'fichajes.php';
+include 'solicitudes.php';
+include 'exportExcel.php';

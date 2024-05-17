@@ -64,3 +64,42 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+# Para poder trabajar con PHP y XAMPP
+
+## Xamp:
+
+Para la instalación y uso del back, primero debemos de tener instalado [XAMPP](https://www.apachefriends.org/es/index.html) (Paquete de software libre que incluye MariaDB, PHP y Perl).
+
+
+## Composer:
+
+Para poder realizar la instalación de la aplicación una vez descargada del git, nos hará falta tener instalado [composer](https://getcomposer.org/download/) para poder hacer la instalación de los componentes.
+
+
+
+## Instalación y Ejecución:
+
+Una vez instalado el XAMPP, en su panel de control
+
+
+
+![alt text](image.png)
+
+
+Activaremos tanto del Apache como el MySQL, quedándonos como muestra la siguiente imagen:
+
+![alt text](image-1.png)
+
+
+Para instalar, deberemos de ir a la carpeta de XAMPP a la carpeta htdocs y descargar la aplicación del git, se puede realizar a través de:
+
+Si lo hacemos por SSH: git@github.com:dsansnuoc/controlHorario_back.git
+
+Si lo hacemos por HTTPS: https://github.com/dsansnuoc/controlHorario_back.git
+
+Una vez descargado, en el directorio donde se haya instalado, ejecutamos ‘composer install’, el cual nos instalará todos los componentes y versiones usados.
+
+Una vez haya terminado ejecutaremos `hp artisan migrate`, el cual nos creará las bases de datos con los datos iniciales mínimos que son el superadministrador y los roles.
