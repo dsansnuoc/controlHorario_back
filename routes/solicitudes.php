@@ -5,4 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->post('/solicitudes', [SolicitudesController::class, 'show']);
 
+Route::middleware('auth:api')->post('/solicitudesAlta', [SolicitudesController::class, 'store']);
+
 Route::middleware('auth:api')->put('/solicitudActualizar/{id}', [SolicitudesController::class, 'update']);

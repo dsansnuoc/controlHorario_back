@@ -9,7 +9,7 @@ class Solicitudes extends Model
 {
     use HasFactory;
 
-    protected $table = 'fichaje';
+    protected $table = 'solicitudes';
 
     protected $fillable = [
         'userId',
@@ -20,7 +20,9 @@ class Solicitudes extends Model
         'aceptada',
         'fecha_aceptada',
         'rechazada',
-        'fecha_rechazada'
+        'fecha_rechazada',
+        'texto_solicitud',
+        'motivo_rechazo'
     ];
 
     protected $casts = [

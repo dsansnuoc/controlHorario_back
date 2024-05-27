@@ -14,12 +14,12 @@ class SolicitudesController extends Controller
         try {
             $data = $request->json()->all();
             $nombreConexion = $data['nombreConexion'];
-            $id = $data['id'];
+            $id = $data['user_id'];
 
             $solicitudes = Solicitudes::on($nombreConexion)
                 ->where('userId', $id)
                 ->orderBy('fecha_solicitud', 'desc')
-                ->all();
+                ->get();
 
             return response()->json($solicitudes, 200);
         } catch (\Exception $e) {
@@ -37,11 +37,12 @@ class SolicitudesController extends Controller
 
             $solicitud = new Solicitudes();
 
-            $solicitud->userId  = $data['userId'];
+            $solicitud->userId  = $data['user_id'];
             $solicitud->tipo_solicitud  = $data['tipo_solicitud'];
             $solicitud->fecha_solicitud  = $data['fecha_solicitud'];
             $solicitud->fecha_inicio  = $data['fecha_inicio'];
             $solicitud->fecha_fin  = $data['fecha_fin'];
+            $solicitud->texto_solicitud = $data['texto_solicitud'];
             $solicitud->setConnection($nombreConexion);
             $solicitud->save();
 
@@ -65,6 +66,7 @@ class SolicitudesController extends Controller
                 case 'R':
                     $solicitud->fecha_rechazada  = $data['fecha_rechazada'];
                     $solicitud->rechazada  = $data['rechazada'];
+                    $solicitud->motivo_rechazo = $data['motivo_rechazo'];
                     break;
 
                 case 'A':
